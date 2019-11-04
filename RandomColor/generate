@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      outline: 0;
+    }
+
+    .container {
+      height: 100vh;
+    }
+
+    button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 250px;
+      height: 50px;
+      border: 4px solid #000;
+      text-transform: uppercase;
+      font-size: 1.3rem;
+    }
+  </style>
+
+  <title> Random Color Generated </title>
+</head>
+
+<body>
+
+  <div class="container">
+    <button class='btn btn1'> Wygeneruj color </button>
+  </div>
+
+  <script>
+    const button = document.querySelector('button');
+    const container = document.querySelector('.container');
+
+    const color = () => {
+      let randomColor = Math.random().toString(16).substr(2, 5);
+      const color = `#5${randomColor}`;
+      container.style.backgroundColor = color;
+      button.style.backgroundColor = `#a${randomColor}`;
+    }
+    button.addEventListener('click', color)
+  </script>
+</body>
+
+</html>
