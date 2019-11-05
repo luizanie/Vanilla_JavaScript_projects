@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: grid;
+      grid-template: repeat(8, 1fr)/repeat(8, 1fr);
+      border: 1px solid red;
+    }
+
+    .square {
+      width: 40px;
+      height: 40px;
+      border: 0.5px solid rgb(241, 237, 237);
+      transition: background 2s ease;
+    }
+
+    .square:hover {
+      transition: background 0s ease;
+    }
+
+    .text {
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+  <title> Event listener - mouseover and mouseout </title>
+</head>
+
+<body>
+
+  <div class="text">
+    <h2> Przeciagnij myszką po kwadracie </h2>
+    <p> Myszka na stronie - mouseover + mouseout </p>
+  </div>
+  <div class="container">
+  </div>
+
+  <script>
+    const container = document.querySelector('.container');
+
+    for (let i = 0; i < 64; i++) {
+      const square = document.createElement('div');
+      square.classList.add('square');
+
+      square.addEventListener('mouseover', () => {
+        addColor(square);
+      });
+
+      square.addEventListener('mouseout', () => {
+        removeColor(square);
+      });
+
+      container.appendChild(square);
+    }
+
+    const addColor = (square) => {
+      square.style.background = 'red';
+    };
+
+    const removeColor = (square) => {
+      square.style.background = 'blue';
+    };
+  </script>
+</body>
+
+</html>
