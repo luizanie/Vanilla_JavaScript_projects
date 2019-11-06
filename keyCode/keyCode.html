@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      width: 80vw;
+      flex-wrap: wrap;
+    }
+
+    .container>* {
+      line-height: 50px;
+      text-align: center;
+      height: 50px;
+      border: 2px solid #fff;
+    }
+
+    .red {
+      width: 50px;
+      border-color: #f00;
+    }
+
+    .blue {
+      width: 30px;
+      border-color: #00f;
+    }
+
+    .green {
+      width: 50px;
+      border-radius: 50%;
+      border-color: #0f0;
+
+    }
+
+    .black {
+      width: 50px;
+      border-color: #000;
+    }
+
+    .white {
+      width: 50px;
+      background: rgb(148, 159, 187);
+      border: 1px solid #fff;
+    }
+  </style>
+
+  <title> Up down right left arrow seguence </title>
+</head>
+
+<body>
+  <h2 style='text-align:center; margin-top:40px'> Nacisnij strzałki lub jakikolwiek inny klawisz</h2>
+  <p style='text-align:center' class="keyCode"></p>
+
+  <div class="container">
+  </div>
+
+  <script>
+    const container = document.querySelector('.container');
+    let number = 1;
+    const keyCode = document.querySelector('.keyCode');
+
+
+    const AddElement = (e) => {
+      if (e.keyCode === 37) {
+        const div = document.createElement('div');
+        div.classList.add('red');
+        div.textContent = number;
+        container.appendChild(div);
+        number++;
+      } else if (e.keyCode == 38) {
+        const div = document.createElement('div');
+        div.classList.add('blue');
+        div.textContent = number;
+        container.appendChild(div);
+        number++;
+      } else if (e.keyCode == 39) {
+        const div = document.createElement('div');
+        div.classList.add('green');
+        div.textContent = number;
+        container.appendChild(div);
+        number++;
+      } else if (e.keyCode == 40) {
+        const div = document.createElement('div');
+        div.classList.add('black');
+        div.textContent = number;
+        container.appendChild(div);
+        number++;
+      } else {
+        const div = document.createElement('div');
+        div.classList.add('white');
+        div.textContent = number;
+        container.appendChild(div);
+        number++;
+      }
+
+      if (e.keyCode >= 48 && e.keyCode <= 57) {
+        keyCode.innerHTML = `klawisz to cyfra o numerze ASCII: ${e.keyCode}`
+      } else if (e.keyCode >= 65 && e.keyCode <= 90) {
+        keyCode.innerHTML = `klawisz to litera o numerze ASCII: ${e.keyCode}`
+      } else {
+        keyCode.innerHTML = `klawisz to znak o numerze ASCII: ${e.keyCode}`
+      }
+    }
+
+    window.addEventListener('keydown', AddElement);
+  </script>
+</body>
+
+</html>
