@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .imgs {
+      display: flex;
+      height: 100vh;
+      align-items: center;
+    }
+
+    .img {
+      height: 90vh;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      border: 2px dotted rgb(61, 7, 7);
+      border-radius: 30px;
+    }
+
+    .img p {
+      color: rgb(110, 117, 101);
+      font-size: 1.2rem;
+    }
+
+    .img:nth-child(1) {
+      background: #9ABCA7;
+    }
+
+    .img:nth-child(2) {
+      background: #E5EBEA;
+    }
+
+    .img:nth-child(3) {
+      background: #434A42;
+    }
+
+    .img:nth-child(4) {
+      background: #ADE1E5;
+    }
+
+    .img:nth-child(5) {
+      background: #000501;
+    }
+
+    .active {
+      flex: 4;
+    }
+  </style>
+  <title> Expanding cards - flex + JavaScript </title>
+</head>
+
+<body>
+  <div class="imgs">
+    <div class="img active">
+      <p> Lorem </p>
+    </div>
+    <div class="img">
+      <p> Lorem </p>
+    </div>
+    <div class="img">
+      <p> Lorem </p>
+    </div>
+    <div class="img">
+      <p> Lorem </p>
+    </div>
+    <div class="img">
+      <p> Lorem </p>
+    </div>
+  </div>
+
+  <script>
+    const imgs = document.querySelectorAll('.img');
+
+    imgs.forEach(img =>
+      img.addEventListener('click', () => {
+        removeActive();
+        img.classList.add('active');
+
+      }));
+
+    function removeActive() {
+      imgs.forEach(img => {
+        img.classList.remove('active');
+      })
+    }
+  </script>
+</body>
+
+</html>
