@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      margin: 60px;
+      padding: 20px;
+      background: #ddd;
+
+    }
+
+    button,
+    input {
+      height: 32px;
+      border-radius: 10px;
+      border: 2px solid #000;
+      color: rgb(8, 18, 110);
+    }
+
+    label,
+    h3 {
+      color: rgb(8, 18, 110);
+      text-transform: uppercase;
+    }
+  </style>
+  
+  <title> Losowy cytat </title>
+</head>
+
+
+<body>
+  <div class="container">
+    <form>
+      <label> Dodaj:
+        <input type="text">
+      </label>
+      <button class="add"> Dodaj cytat do bazy </button>
+    </form>
+
+
+    <h2> Cytat na dzisiaj: </h2>
+    <button class="showQuote"> Pokaz cytat </button>
+    <button class="showAll"> Pokaz wszystkie cytaty </button>
+
+    <h3> </h3>
+  </div>
+
+  <script>
+    const quotes = [
+      'Bo widzisz, chwila przebiega tak straszliwie szybko, że nie tylko nie mogę na niej stanąć, ale nawet jej dotknąć. ',
+      'Dalekosiezne plany sa zbyt czesto omijaja terazniejszoscia', 'Okrucienstwo czasu najlepiej widac w lustrze ',
+      'zycie to tylko tkanina przyzwyczajen '
+    ];
+
+    const add = document.querySelector('.add');
+    const showQuoteBtn = document.querySelector('.showQuote');
+    const showAllBtn = document.querySelector('.showAll');
+    const h3 = document.querySelector('h3');
+
+    const addQuote = (e) => {
+      e.preventDefault();
+      const input = document.querySelector('input');
+      quotes.push(input.value);
+      input.value = "";
+    }
+
+
+    const showAllQuotes = () => {
+      h3.textContent = quotes.split(' ')
+    }
+
+    const showQuote = () => {
+      const index = Math.floor(Math.random() * quotes.length);
+      h3.textContent = quotes[index];
+    }
+
+
+    add.addEventListener('click', addQuote);
+    showQuoteBtn.addEventListener('click', showQuote);
+    showAllBtn.addEventListener('click', showAllQuotes);
+  </script>
+  
+</body>
+
+</html>
